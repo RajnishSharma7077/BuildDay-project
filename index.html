@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Mini Tool Dashboard — Copy & Snippets</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app" id="app">
+    <header>
+      <div class="brand">
+        <div class="logo">T</div>
+        <div>
+          <h1>Tools — Mini Dashboard</h1>
+          <p class="subtitle">Copy, paste, save snippets & manage history</p>
+        </div>
+      </div>
+
+      <div class="header-actions">
+        <div class="count" id="wc">0 chars • 0 words</div>
+        <button class="theme-toggle" id="themeBtn">🌙 Dark</button>
+      </div>
+    </header>
+
+    <div class="main">
+      <!-- LEFT: Tools -->
+      <div class="tools">
+        <div class="card">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+            <strong>Quick Tools</strong>
+            <small class="subtitle" style="font-size:12px;color:var(--muted)">Shortcuts enabled</small>
+          </div>
+          <div class="tool-grid">
+            <div class="tool-btn" id="copyBtn" title="Copy editor (Ctrl/Cmd+Shift+C)">
+              <div class="icon">📋</div>
+              <div class="label">Copy</div>
+              <div class="hint">Copy text</div>
+            </div>
+
+            <div class="tool-btn" id="pasteBtn" title="Paste into editor (Ctrl/Cmd+Shift+V)">
+              <div class="icon">📥</div>
+              <div class="label">Paste</div>
+              <div class="hint">Read clipboard</div>
+            </div>
+
+            <div class="tool-btn" id="clearBtn" title="Clear editor">
+              <div class="icon">🧹</div>
+              <div class="label">Clear</div>
+              <div class="hint">Empty editor</div>
+            </div>
+
+            <div class="tool-btn" id="saveBtn" title="Save snippet (Ctrl/Cmd+S)">
+              <div class="icon">💾</div>
+              <div class="label">Save</div>
+              <div class="hint">Save to history</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <strong>Export / Import</strong>
+          <div style="display:flex;gap:8px;margin-top:8px">
+            <button id="exportBtn" class="tool-btn" style="flex:1">⬇ Export JSON</button>
+            <label class="tool-btn" style="flex:1;cursor:pointer">
+              ⬆ Import
+              <input type="file" id="importFile" class="export-input" accept="application/json" />
+            </label>
+          </div>
+          <div style="margin-top:10px;color:var(--muted);font-size:13px">
+            Export or import your saved snippets.
+          </div>
+        </div>
+      </div>
+
+      <!-- CENTER: Editor -->
+      <div class="editor-wrap">
+        <div class="editor-card">
+          <div class="toolbar">
+            <div class="left">
+              <strong>Editor</strong>
+              <div style="width:12px"></div>
+              <div class="count" id="smallCount">0 chars • 0 words</div>
+            </div>
+            <div class="right" style="display:flex;gap:8px;align-items:center">
+              <small style="color:var(--muted)">Auto-save to history is manual</small>
+            </div>
+          </div>
+
+          <textarea id="editor" class="editor" placeholder="Type or paste something here..."></textarea>
+        </div>
+      </div>
+
+      <!-- RIGHT: History -->
+      <div class="history">
+        <div class="card">
+          <strong>History</strong>
+          <div style="margin-top:8px;color:var(--muted);font-size:13px">Saved snippets (click to load)</div>
+        </div>
+
+        <div class="history-list card" id="historyList" style="padding:12px;max-height:480px;overflow:auto"></div>
+      </div>
+    </div>
+
+    <footer class="status" id="statusBar">
+      <div id="statusText">Ready</div>
+      <div id="statusRight">No actions yet</div>
+    </footer>
+    <script src="script.js"></script>
+  </div>
